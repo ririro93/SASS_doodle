@@ -9,26 +9,26 @@
 	.box {
 		background: red;
 		cursor: pointer;
-		transition: all 1s ease-in;
+		transition: all 0.5s ease-in;
+		@include square(1);
 	
 		&.red {
 			background: $red;
-			@include square(1);
+			@include square(2);
 		}
 		
 		&.blue {
 			background: $blue;
-			@include square(2);
+			@include square(3);
 		}
 		
 		&.orange {
 			background: $orange;
-			@include square(3);
+			@include square(4);
 		}
 		
 		&:hover {
 			background: black;
-			@include square(1);
 		}
 	}
 }
