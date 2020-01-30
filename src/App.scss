@@ -1,0 +1,35 @@
+@import './utils.scss';
+
+.App {
+	display: flex;
+	justify-content: flex-start;
+	align-items: stretch;	
+	cursor: pointer;
+	
+	.box {
+		background: red;
+		cursor: pointer;
+		transition: all 1s ease-in;
+	
+		&.red {
+			background: $red;
+			@include square(1);
+		}
+		
+		&.blue {
+			background: $blue;
+			@include square(2);
+		}
+		
+		&.orange {
+			background: $orange;
+			@include square(3);
+		}
+		
+		&:hover {
+			background: black;
+			@include square(1);
+		}
+	}
+}
+
