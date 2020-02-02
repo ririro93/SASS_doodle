@@ -1,67 +1,49 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
-import './App.scss';
 
-class App extends Component {
-	state = {
-		red: false,
-		blue: false,
-		orange: false,
-		color: '',
-	}
+import AddTemplate from './components/AddTemplate';
+
+import './styles/App.scss';
+
+export default class App extends Component {
 	
-	handleClick = (e) => {
-		let bool = (e.target.value === 'true');
-		this.setState({
-			[e.target.name]: !bool
-		})
+	state = {
+		currColor: "",
 	}
 
-	handleChange = (e) => {
+	handleClickColor = (e) => {
 		this.setState({
-			[e.target.name]: e.target.value
-		});
+			currColor: e.target.attributes.value.value
+		})
+		
 	}
 	
 	render() {
-		console.log(this.state);
-		const { red, blue, orange, color } = this.state;
+		const { currColor } = this.state;
+		const { 
+			handleClickColor,
+		} = this;
 		
-		return (
+		console.log("render App");
+		console.log("App currColor: ", currColor);
+		
+		return(
 			<main className="App">
-				<input
-					className={`box ${color}`}
-					onChange={this.handleChange}
-					value={color}
-					name="color"
-				/>
-				<button 
-					className={classNames('box', {red})}
-					onClick={this.handleClick}
-					name="red"
-					value={red}
-				>
-					{red}
-				</button>
-				<button 
-					className={classNames('box', {blue})}
-					onClick={this.handleClick}
-					name="blue"
-					value={blue}
-				>
-					{blue}
-				</button>
-				<button 
-					className={classNames('box', {orange})}
-					onClick={this.handleClick}
-					name="orange"
-					value={orange}
-				>
-					{orange}
-				</button>
+				<div className="title">
+					Phonebook Practice!
+				</div>
+				<section className="search">
+					this part for searching
+				</section>
+				<section className="add">
+					<AddTemplate 
+						onClick={handleClickColor}
+						currColor={currColor}
+					/>
+				</section>
+				<section className="info-list">
+					this part for listing info
+				</section>
 			</main>
 		);
-  }
+	}
 }
-
-export default App;
